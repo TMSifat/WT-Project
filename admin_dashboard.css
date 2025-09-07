@@ -1,0 +1,94 @@
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Heading Styling */
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Logout Button */
+.logout-btn {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+/* Table Header */
+th {
+    background: #007BFF;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Table Cells */
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* Table Row Hover Effect */
+tr:hover {
+    background: #f1f1f1;
+}
+
+/* Buttons */
+.btn {
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+/* Edit Button */
+.edit-btn {
+    background: #28a745;
+}
+.edit-btn:hover {
+    background: #218838;
+}
+
+/* Delete Button */
+.delete-btn {
+    background: #dc3545;
+}
+.delete-btn:hover {
+    background: #b02a37;
+}
+
+/* Profile Image */
+table img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}

@@ -26,50 +26,12 @@ $result = mysqli_query($conn, "SELECT * FROM students WHERE role='student'");
 <html>
 <head>
     <title>Admin Dashboard</title>
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-        th {
-            background: #007BFF;
-            color: white;
-        }
-        tr:hover {
-            background: #f1f1f1;
-        }
-        .btn {
-            padding: 5px 10px;
-            text-decoration: none;
-            border-radius: 5px;
-            color: white;
-        }
-        .edit-btn {
-            background: #28a745;
-        }
-        .delete-btn {
-            background: #dc3545;
-        }
-    </style>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="admin_dashboard.css">
 </head>
 <body>
     <h1>Welcome Admin, <?php echo $_SESSION['student']['name']; ?>!</h1>
-    <a href="logout.php">Logout</a>
+    <a href="logout.php" class="logout-btn">Logout</a>
     <hr>
     <h2>All Students</h2>
     <table>
@@ -87,9 +49,9 @@ $result = mysqli_query($conn, "SELECT * FROM students WHERE role='student'");
             <td><?php echo $row['id']; ?></td>
             <td>
                 <?php if ($row['profile_photo']) { ?>
-                    <img src="<?php echo $row['profile_photo']; ?>" width="50" height="50">
+                    <img src="<?php echo $row['profile_photo']; ?>" width="50" height="50" alt="Profile">
                 <?php } else { ?>
-                    <img src="uploads/default.png" width="50" height="50">
+                    <img src="uploads/default.png" width="50" height="50" alt="Default">
                 <?php } ?>
             </td>
             <td><?php echo $row['name']; ?></td>
@@ -98,7 +60,7 @@ $result = mysqli_query($conn, "SELECT * FROM students WHERE role='student'");
             <td><?php echo $row['department']; ?></td>
             <td>
                 <a href="edit_student.php?id=<?php echo $row['id']; ?>" class="btn edit-btn">Edit</a>
-                <a href="admin_dashboard.php?delete_id=<?php echo $row['id']; ?>" class="btn delete-btn" onclick="return confirm('Are you sure?');">Delete</a>
+                <a href="admin_dashboard.php?delete_id=<?php echo $row['id']; ?>" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
             </td>
         </tr>
         <?php } ?>

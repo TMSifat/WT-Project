@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email      = trim($_POST['email']);
     $department = trim($_POST['department']);
     $password   = !empty($_POST['password']) ? md5(trim($_POST['password'])) : $student['password'];
-    
+
     // যদি নতুন ছবি আপলোড করে
     if (!empty($_FILES['profile_photo']['name'])) {
         $photo_name = $_FILES['profile_photo']['name'];
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "UPDATE students SET 
             name='$name', roll='$roll', email='$email', department='$department', 
             password='$password', profile_photo='$photo_path'
-            WHERE id=".$student['id'];
+            WHERE id=" . $student['id'];
 
     if (mysqli_query($conn, $sql)) {
         // Update session data
@@ -60,75 +60,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .update-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            width: 350px;
-            text-align: center;
-        }
-        img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            border: 3px solid #4CAF50;
-            object-fit: cover;
-        }
-        input {
-            width: 90%;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        button {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #45a049;
-        }
-        a {
-            display: block;
-            margin-top: 12px;
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="update_profile.css">
 </head>
 <body>
     <div class="update-box">
         <h2>Update Profile</h2>
         <img src="<?php echo $student['profile_photo']; ?>" alt="Profile Photo">
-        <form action="" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" value="<?php echo $student['name']; ?>" required><br>
-            <input type="text" name="roll" value="<?php echo $student['roll']; ?>" required><br>
-            <input type="email" name="email" value="<?php echo $student['email']; ?>" required><br>
-            <input type="text" name="department" value="<?php echo $student['department']; ?>" required><br>
-            <input type="password" name="password" placeholder="Enter new password (optional)"><br>
-            <input type="file" name="profile_photo" accept="image/*"><br>
+        <form action="" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(event)">
+            <input type="text" name="name" id="name" value="<?php echo $student['name']; ?>" required><br>
+            <input type="text" name="roll" id="roll" value="<?php echo $student['roll']; ?>" required><br>
+            <input type="email" name="email" id="email" value="<?php echo $student['email']; ?>" required><br>
+            
+            <select name="department" id="department" required>
+                <option value="">-- Select Department --</option>
+                <option value="CSE" <?php echo ($student['department']=="CSE")?"selected":""; ?>>CSE</option>
+                <option value="BBA" <?php echo ($student['department']=="BBA")?"selected":""; ?>>BBA</option>
+                <option value="EEE" <?php echo ($student['department']=="EEE")?"selected":""; ?>>EEE</option>
+                <option value="LAW" <?php echo ($student['department']=="LAW")?"selected":""; ?>>LAW</option>
+                <option value="ENGLISH" <?php echo ($student['department']=="ENGLISH")?"selected":""; ?>>ENGLISH</option>
+            </select><br>
+
+            <input type="password" name="password" id="password" placeholder="Enter new password (optional)"><br>
+            <input type="file" name="profile_photo" id="profile_photo" accept="image/*"><br>
             <button type="submit">Update</button>
         </form>
         <a href="profile.php">Back to Profile</a>
     </div>
+    <script src="update_profile.js"></script>
 </body>
 </html>

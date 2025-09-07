@@ -37,112 +37,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Edit Student</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            width: 450px;
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .container h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .profile-photo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-
-        .profile-photo img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #007BFF;
-            box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
-        }
-
-        label {
-            font-weight: bold;
-            display: block;
-            margin: 8px 0 5px;
-            color: #555;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            outline: none;
-            transition: 0.3s;
-            font-size: 15px;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="file"]:focus {
-            border-color: #007BFF;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 12px;
-            color: #007BFF;
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="edit_student.css"> <!-- CSS ফাইল লিঙ্ক -->
+    <script src="edit_student.js" defer></script> <!-- JS ফাইল লিঙ্ক -->
 </head>
 <body>
     <div class="container">
         <h1>Edit Student</h1>
         <div class="profile-photo">
-            <img src="<?php echo $student['profile_photo'] ? $student['profile_photo'] : 'uploads/default.png'; ?>" alt="Profile Photo">
+            <img id="preview" src="<?php echo $student['profile_photo'] ? $student['profile_photo'] : 'uploads/default.png'; ?>" alt="Profile Photo">
         </div>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" id="editForm">
             <label>Name:</label>
             <input type="text" name="name" value="<?php echo $student['name']; ?>" required>
 
@@ -150,10 +54,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="email" name="email" value="<?php echo $student['email']; ?>" required>
 
             <label>Department:</label>
-            <input type="text" name="department" value="<?php echo $student['department']; ?>">
+            <select name="department" required>
+                <option value="">-- Select Department --</option>
+                <option value="CSE" <?php if($student['department']=="CSE") echo "selected"; ?>>CSE</option>
+                <option value="BBA" <?php if($student['department']=="BBA") echo "selected"; ?>>BBA</option>
+                <option value="EEE" <?php if($student['department']=="EEE") echo "selected"; ?>>EEE</option>
+                <option value="LAW" <?php if($student['department']=="LAW") echo "selected"; ?>>LAW</option>
+                <option value="ENGLISH" <?php if($student['department']=="ENGLISH") echo "selected"; ?>>ENGLISH</option>
+            </select><br>
 
             <label>Change Profile Photo:</label>
-            <input type="file" name="profile_photo">
+            <input type="file" name="profile_photo" id="photoInput">
 
             <button type="submit" class="btn">Update</button>
         </form>
