@@ -27,7 +27,6 @@
         </form>
 
         <div class="extra-links">
-
             <a href="home.php">🏠 Home</a>
         </div>
     </div>

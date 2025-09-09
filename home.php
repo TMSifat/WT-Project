@@ -29,10 +29,10 @@ session_start();
             <a href="logout.php" class="nav-btn logout">Logout</a>
         <?php else: ?>
             <!-- 🔹 Normal Login/Register -->
-            <a href="login.html" class="nav-btn">Login</a>
-            <a href="register.html" class="nav-btn register">Register</a>
+            <a href="login.php" class="nav-btn">Login</a>
+            <a href="register.php" class="nav-btn register">Register</a>
             <!-- 🔹 New Admin Login Button -->
-            <a href="admin_login.html" class="nav-btn admin-login">Admin Login</a>
+            <a href="admin_login.php" class="nav-btn admin-login">Admin Login</a>
         <?php endif; ?>
     </div>
 </nav>
@@ -42,7 +42,7 @@ session_start();
     <header class="hero">
         <h1> Student Profile Management System</h1>
         <p>A complete portal for Students, Faculties, and Admins</p>
-        <a href="login.html" class="cta-btn">Get Started</a>
+        <a href="login.php" class="cta-btn">Get Started</a>
     </header>
 
     <!-- 🔹 About Section -->

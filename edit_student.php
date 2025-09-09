@@ -6,7 +6,7 @@ if (!$conn) {
 }
 
 if (!isset($_SESSION['student']) || $_SESSION['student']['role'] !== 'admin') {
-    header("Location: login.html");
+    header("Location: login.php");
     exit();
 }
 

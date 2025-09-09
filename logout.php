@@ -10,9 +10,9 @@ session_destroy();
 
 // role redirect
 if ($role === 'admin') {
-    header("Location: admin_login.html");
+    header("Location: admin_login.php");
 } else {
-    header("Location: login.html");
+    header("Location: login.php");
 }
 exit();
 ?>
