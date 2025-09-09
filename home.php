@@ -8,44 +8,61 @@ session_start();
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <!-- 🔹 Top Navigation Bar -->
+    <!--  Top Navigation Bar -->
     <nav class="navbar">
-    <div class="navbar-left">
-        <?php if(isset($_SESSION['role'])): ?>
-            <span>✅ Logged in as: <?php echo ucfirst($_SESSION['role']); ?></span>
-        <?php else: ?>
-            <span>👤 You are in Guest Mode</span>
-        <?php endif; ?>
-    </div>
-    <div class="navbar-right">
-        <?php if(isset($_SESSION['role'])): ?>
-            <?php if($_SESSION['role'] == 'admin'): ?>
-                <a href="admin_dashboard.php" class="nav-btn">Admin Dashboard</a>
-            <?php elseif($_SESSION['role'] == 'student'): ?>
-                <a href="student_dashboard.php" class="nav-btn">Student Dashboard</a>
-            <?php elseif($_SESSION['role'] == 'faculty'): ?>
-                <a href="faculty_dashboard.php" class="nav-btn">Faculty Dashboard</a>
+        <div class="navbar-left">
+            <?php if(isset($_SESSION['role'])): ?>
+                <span> Logged in as: <?php echo ucfirst($_SESSION['role']); ?></span>
+            <?php else: ?>
+                <span> You are in Guest Mode</span>
             <?php endif; ?>
-            <a href="logout.php" class="nav-btn logout">Logout</a>
-        <?php else: ?>
-            <!-- 🔹 Normal Login/Register -->
-            <a href="login.php" class="nav-btn">Login</a>
-            <a href="register.php" class="nav-btn register">Register</a>
-            <!-- 🔹 New Admin Login Button -->
-            <a href="admin_login.php" class="nav-btn admin-login">Admin Login</a>
-        <?php endif; ?>
-    </div>
-</nav>
+        </div>
+        <div class="navbar-right">
+            <?php if(isset($_SESSION['role'])): ?>
+                <?php if($_SESSION['role'] == 'admin'): ?>
+                    <a href="admin_dashboard.php" class="nav-btn">Admin Dashboard</a>
+                <?php elseif($_SESSION['role'] == 'student'): ?>
+                    <a href="student_dashboard.php" class="nav-btn">Student Dashboard</a>
+                <?php elseif($_SESSION['role'] == 'faculty'): ?>
+                    <a href="faculty_dashboard.php" class="nav-btn">Faculty Dashboard</a>
+                <?php endif; ?>
+                <a href="logout.php" class="nav-btn logout">Logout</a>
+            <?php else: ?>
+                <!--  Normal Login/Register -->
+                <a href="login.php" class="nav-btn">Login</a>
+                <a href="register.php" class="nav-btn register">Register</a>
+                <!-- 🔹New Admin Login Button -->
+                <a href="admin_login.php" class="nav-btn admin-login">Admin Login</a>
+            <?php endif; ?>
+        </div>
+    </nav>
 
-
-    <!-- 🔹 Hero Section -->
+    <!--  Hero Section -->
     <header class="hero">
         <h1> Student Profile Management System</h1>
         <p>A complete portal for Students, Faculties, and Admins</p>
         <a href="login.php" class="cta-btn">Get Started</a>
     </header>
 
-    <!-- 🔹 About Section -->
+    <!-- 🔹 Guest Search Section -->
+    <?php if(!isset($_SESSION['role'])): ?>
+        <section class="guest-search">
+            <h2>Search Student By Department</h2>
+            <form action="search.php" method="GET" class="search-form">
+                 <select name="department" required>
+                <option value="">-- Select Department --</option>
+                <option value="CSE">CSE</option>
+                <option value="BBA">BBA</option>
+                <option value="EEE">EEE</option>
+                <option value="LAW">LAW</option>
+                <option value="ENGLISH">ENGLISH</option>
+            </select><br>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+    <?php endif; ?>
+
+    <!--  About Section -->
     <section class="about">
         <h2>About This Project</h2>
         <p>This system helps manage students, faculties, and admins efficiently. 
@@ -53,7 +70,7 @@ session_start();
         and admins have full control over the system.</p>
     </section>
 
-    <!-- 🔹 Features Section -->
+    <!--  Features Section -->
     <section class="features">
         <h2>Key Features</h2>
         <div class="feature-cards">
@@ -72,7 +89,7 @@ session_start();
         </div>
     </section>
 
-    <!-- 🔹 Contact Section -->
+    <!--  Contact Section -->
     <section class="contact">
         <h2>Contact Us</h2>
         <p>For support or queries, reach out at:</p>
@@ -80,7 +97,7 @@ session_start();
         <p><b>Phone:</b> +880 1795108689</p>
     </section>
 
-    <!-- 🔹 Footer -->
+    <!--  Footer -->
     <footer>
         <p>&copy; <?php echo date("Y"); ?> Student Profile System | Developed by Tanvir Sifat</p>
     </footer>

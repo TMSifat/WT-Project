@@ -27,7 +27,7 @@
         </form>
 
         <div class="extra-links">
-            <a href="home.php">🏠 Home</a>
+            <a href="home.php"> Home</a>
         </div>
     </div>
     <script src="script.js"></script>

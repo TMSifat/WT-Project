@@ -24,7 +24,7 @@ $student = $_SESSION['student'];
         <p><b>Department:</b> <?php echo $student['department']; ?></p>
         <a href="update_profile.php" class="btn update-btn">Update Profile</a>
         <a href="logout.php" class="btn logout-btn">Logout</a>
-        <a href="home.php" class="btn home-btn">🏠 Home</a>
+        <a href="home.php" class="btn home-btn"> Home</a>
     </div>
 </body>
 </html>

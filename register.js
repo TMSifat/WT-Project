@@ -94,10 +94,10 @@ function checkPasswordMatch() {
 
     if (password.value === confirmPassword.value) {
         matchMsg.style.color = "green";
-        matchMsg.innerHTML = "Passwords match ✅";
+        matchMsg.innerHTML = "Passwords match ";
     } else {
         matchMsg.style.color = "red";
-        matchMsg.innerHTML = "Passwords do not match ❌";
+        matchMsg.innerHTML = "Passwords do not match ";
     }
 }
 

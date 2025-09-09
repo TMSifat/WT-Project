@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="extra-links">
             <a href="register.php">Create Account</a>
-            <a href="home.php">🏠 Home</a>
+            <a href="home.php"> Home</a>
         </div>
     </div>
     <script src="script.js"></script>

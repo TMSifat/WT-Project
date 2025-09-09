@@ -37,10 +37,10 @@ function togglePassword() {
 
     if (password.type === "password") {
         password.type = "text";
-        toggleIcon.innerText = "🙈";
+        toggleIcon.innerText = " ";
     } else {
         password.type = "password";
-        toggleIcon.innerText = "👁️";
+        toggleIcon.innerText = " ";
     }
 }
 
