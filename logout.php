@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-// রোল বের করি student session এর ভেতর থেকে
+// student session 
 $role = isset($_SESSION['student']['role']) ? $_SESSION['student']['role'] : 'student';
 
-// সব session বন্ধ করি
+
 session_unset();
 session_destroy();
 
-// রোল অনুযায়ী redirect
+// role redirect
 if ($role === 'admin') {
     header("Location: admin_login.html");
 } else {

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $department = trim($_POST['department']);
     $password   = !empty($_POST['password']) ? md5(trim($_POST['password'])) : $student['password'];
 
-    // যদি নতুন ছবি আপলোড করে
+    // new pic
     if (!empty($_FILES['profile_photo']['name'])) {
         $photo_name = $_FILES['profile_photo']['name'];
         $photo_tmp  = $_FILES['profile_photo']['tmp_name'];
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $photo_path = $student['profile_photo'];
     }
 
-    // Update ডাটাবেস
+    // Update db
     $sql = "UPDATE students SET 
             name='$name', roll='$roll', email='$email', department='$department', 
             password='$password', profile_photo='$photo_path'

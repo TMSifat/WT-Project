@@ -7,7 +7,7 @@ if (!$conn) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username   = trim($_POST['username']);
-    $password   = md5(trim($_POST['password'])); // তোমার আগের মতোই md5
+    $password   = md5(trim($_POST['password'])); 
     $login_type = isset($_POST['login_type']) ? $_POST['login_type'] : "student"; // student/admin
 
     $sql = "SELECT * FROM students WHERE username='$username' AND password='$password'";
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
 
-        // 🔹 Role check যোগ করা হলো
+        // 🔹 Role check 
         if ($login_type == "admin" && $row['role'] != "admin") {
             echo "<script>alert('Access denied! Please use the Student Login'); window.location='login.html';</script>";
             exit();
@@ -25,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        // 🔹 Session সেট
+        // 🔹 Session
         $_SESSION['student'] = $row;
 
-        // 🔹 Redirect আলাদা করা হলো
+        // 🔹 Redirect
         if ($row['role'] == "admin") {
             header("Location: admin_dashboard.php");
         } else {

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $department = $_POST['department'];
 
-    // প্রোফাইল ছবি আপলোড
+    // pic upload
     if ($_FILES['profile_photo']['name']) {
         $target_dir = "uploads/";
         $target_file = $target_dir . time() . "_" . basename($_FILES['profile_photo']['name']);
@@ -37,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Edit Student</title>
-    <link rel="stylesheet" href="edit_student.css"> <!-- CSS ফাইল লিঙ্ক -->
-    <script src="edit_student.js" defer></script> <!-- JS ফাইল লিঙ্ক -->
+    <link rel="stylesheet" href="edit_student.css"> 
+    <script src="edit_student.js" defer></script> 
 </head>
 <body>
     <div class="container">

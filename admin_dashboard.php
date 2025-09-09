@@ -5,13 +5,13 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
-// যদি Admin না হয় → login এ পাঠাও
+
 if (!isset($_SESSION['student']) || $_SESSION['student']['role'] !== 'admin') {
     header("Location: login.html");
     exit();
 }
 
-// ডিলিট বাটনে ক্লিক হলে ছাত্র ডিলিট করো
+
 if (isset($_GET['delete_id'])) {
     $id = intval($_GET['delete_id']);
     mysqli_query($conn, "DELETE FROM students WHERE id = $id");
@@ -19,7 +19,7 @@ if (isset($_GET['delete_id'])) {
     exit();
 }
 
-// সব ছাত্রের ডেটা নিয়ে আসো
+
 $result = mysqli_query($conn, "SELECT * FROM students WHERE role='student'");
 ?>
 <!DOCTYPE html>
