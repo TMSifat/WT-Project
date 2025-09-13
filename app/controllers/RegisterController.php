@@ -16,7 +16,7 @@ class RegisterController
 
     public function register()
     {
-        // Mimic old behavior
+        
         if ($this->students->usernameExists(trim($_POST['username'] ?? ''))) {
             echo "<script>alert('Username already exists! Try another.'); window.location='" . url('register') . "';</script>";
             exit();

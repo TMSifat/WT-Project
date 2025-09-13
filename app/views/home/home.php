@@ -85,11 +85,11 @@
         <h2>Contact Us</h2>
         <p>For support or queries, reach out at:</p>
         <p><b>Email:</b> support@gmail.com</p>
-        <p><b>Phone:</b> +880 1795108689</p>
+        <p><b>Phone:</b> +880 123456789</p>
     </section>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> Student Profile System | Developed by Tanvir Sifat</p>
+        <p>&copy; <?php echo date("Y"); ?> Student Profile System | Developed by XYZ</p>
     </footer>
 </body>
 </html>
