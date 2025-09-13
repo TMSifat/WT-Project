@@ -13,7 +13,7 @@ class ProfileController
     {
         no_cache();
         if (!isset($_SESSION['student'])) {
-            redirect('login.php');
+            redirect('login');
         }
     }
 
@@ -33,7 +33,7 @@ class ProfileController
             if ($ok) {
                 // refresh session data
                 $_SESSION['student'] = $this->students->findById((int)$student['id']);
-                echo "<script>alert('Profile updated successfully!'); window.location='profile.php';</script>";
+                echo "<script>alert('Profile updated successfully!'); window.location='".url('profile')."';</script>";
                 return;
             }
         }

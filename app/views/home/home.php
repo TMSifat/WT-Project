@@ -4,6 +4,7 @@
 <head>
     <title>Student Profile Management System</title>
     <link rel="stylesheet" href="<?php echo asset('css/home.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/search.css'); ?>">
 </head>
 <body>
     <nav class="navbar">
@@ -17,17 +18,17 @@
         <div class="navbar-right">
             <?php if(isset($_SESSION['role'])): ?>
                 <?php if($_SESSION['role'] == 'admin'): ?>
-                    <a href="<?php echo url('admin_dashboard.php'); ?>" class="nav-btn">Admin Dashboard</a>
+                    <a href="<?php echo url('admin_dashboard'); ?>" class="nav-btn">Admin Dashboard</a>
                 <?php elseif($_SESSION['role'] == 'student'): ?>
-                    <a href="<?php echo url('student_dashboard.php'); ?>" class="nav-btn">Student Dashboard</a>
+                    <a href="<?php echo url('student_dashboard'); ?>" class="nav-btn">Student Dashboard</a>
                 <?php elseif($_SESSION['role'] == 'faculty'): ?>
-                    <a href="<?php echo url('faculty_dashboard.php'); ?>" class="nav-btn">Faculty Dashboard</a>
+                    <a href="<?php echo url('faculty_dashboard'); ?>" class="nav-btn">Faculty Dashboard</a>
                 <?php endif; ?>
-                <a href="<?php echo url('logout.php'); ?>" class="nav-btn logout">Logout</a>
+                <a href="<?php echo url('logout'); ?>" class="nav-btn logout">Logout</a>
             <?php else: ?>
-                <a href="<?php echo url('login.php'); ?>" class="nav-btn">Login</a>
-                <a href="<?php echo url('register.php'); ?>" class="nav-btn register">Register</a>
-                <a href="<?php echo url('admin_login.php'); ?>" class="nav-btn admin-login">Admin Login</a>
+                <a href="<?php echo url('login'); ?>" class="nav-btn">Login</a>
+                <a href="<?php echo url('register'); ?>" class="nav-btn register">Register</a>
+                <a href="<?php echo url('admin_login'); ?>" class="nav-btn admin-login">Admin Login</a>
             <?php endif; ?>
         </div>
     </nav>
@@ -35,13 +36,13 @@
     <header class="hero">
         <h1> Student Profile Management System</h1>
         <p>A complete portal for Students, Faculties, and Admins</p>
-        <a href="<?php echo url('login.php'); ?>" class="cta-btn">Get Started</a>
+        <a href="<?php echo url('login'); ?>" class="cta-btn">Get Started</a>
     </header>
 
     <?php if(!isset($_SESSION['role'])): ?>
         <section class="guest-search">
             <h2>Search Student By Department</h2>
-            <form action="<?php echo url('search.php'); ?>" method="GET" class="search-form">
+            <form action="<?php echo url('search'); ?>" method="GET" class="search-form">
                  <select name="department" required>
                 <option value="">-- Select Department --</option>
                 <option value="CSE">CSE</option>

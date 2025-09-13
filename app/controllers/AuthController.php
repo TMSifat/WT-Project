@@ -29,22 +29,22 @@ class AuthController
         if ($user) {
             // Role gate to preserve behavior
             if ($login_type === 'admin' && ($user['role'] ?? 'student') !== 'admin') {
-                echo "<script>alert('Access denied! Please use the Student Login'); window.location='login.php';</script>";
+                echo "<script>alert('Access denied! Please use the Student Login'); window.location='" . url('login') . "';</script>";
                 exit();
             } elseif ($login_type === 'student' && ($user['role'] ?? 'student') !== 'student') {
-                echo "<script>alert('Access denied! Please use the Admin Login'); window.location='login.php';</script>";
+                echo "<script>alert('Access denied! Please use the Admin Login'); window.location='" . url('login') . "';</script>";
                 exit();
             }
 
             $_SESSION['student'] = $user;
             if (($user['role'] ?? 'student') === 'admin') {
-                redirect('admin_dashboard.php');
+                redirect('admin_dashboard');
             } else {
-                redirect('profile.php');
+                redirect('profile');
             }
         }
 
-        echo "<script>alert('Invalid username or password'); window.location='login.php';</script>";
+        echo "<script>alert('Invalid username or password'); window.location='" . url('login') . "';</script>";
         exit();
     }
 
@@ -61,8 +61,8 @@ class AuthController
         no_cache();
         header('Clear-Site-Data: "cache"');
         if ($role === 'admin') {
-            redirect('admin_login.php');
+            redirect('admin_login');
         }
-        redirect('login.php');
+        redirect('login');
     }
 }

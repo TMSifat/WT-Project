@@ -27,7 +27,7 @@
             <input type="file" name="profile_photo" id="profile_photo" accept="image/*"><br>
             <button type="submit">Update</button>
         </form>
-        <a href="<?php echo url('profile.php'); ?>">Back to Profile</a>
+        <a href="<?php echo url('profile'); ?>">Back to Profile</a>
     </div>
     <script src="<?php echo asset('js/update_profile.js'); ?>"></script>
 </body>

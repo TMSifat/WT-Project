@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <h1>Admin Login</h1>
-        <form action="login.php" method="POST" onsubmit="return validateLoginForm(event)">
+        <form action="<?php echo url('login'); ?>" method="POST" onsubmit="return validateLoginForm(event)">
             <input type="hidden" name="login_type" value="admin">
             <label>Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" required onkeyup="validateUsername(this)">
@@ -28,7 +28,7 @@
             <button type="submit" class="btn">Login</button>
         </form>
         <div class="extra-links">
-            <a href="<?php echo url('home.php'); ?>"> Home</a>
+            <a href="<?php echo url('home'); ?>"> Home</a>
         </div>
     </div>
 </body>

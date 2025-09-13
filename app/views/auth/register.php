@@ -9,7 +9,7 @@
 <body>
     <div class="reg-box">
         <h2>Student Registration</h2>
-        <form action="register.php" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo url('register'); ?>" method="POST" enctype="multipart/form-data">
             <input type="text" name="username" placeholder="Enter Username" required><br>
             <input type="password" name="password" placeholder="Enter Password" required><br>
             <input type="text" name="name" placeholder="Enter Full Name" required><br>
@@ -27,7 +27,7 @@
             <button type="submit">Register</button>
         </form>
         <script src="<?php echo asset('js/register1.js'); ?>"></script>
-        <a href="<?php echo url('login.php'); ?>">Already have an account? Login</a>
+        <a href="<?php echo url('login'); ?>">Already have an account? Login</a>
     </div>
 </body>
 </html>

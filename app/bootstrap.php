@@ -27,30 +27,45 @@ function view(string $path, array $data = [])
 }
 
 // Compute web base path to the project (e.g., /WTproject/)
+// Never return a filesystem path; only a URL path starting with '/'
 function base_path(): string
 {
-    $doc = isset($_SERVER['DOCUMENT_ROOT']) ? str_replace('\\','/', rtrim($_SERVER['DOCUMENT_ROOT'], '/')) : '';
-    $root = str_replace('\\','/', dirname(__DIR__)); // filesystem path to project root
-    if ($doc && strpos($root, $doc) === 0) {
-        $rel = substr($root, strlen($doc));
-        $rel = $rel === false ? '' : $rel;
-        return ($rel === '' ? '/' : $rel . '/') ;
+    // Prefer SCRIPT_NAME which contains the executed script path (e.g., /WTproject/login.php)
+    $script = isset($_SERVER['SCRIPT_NAME']) ? str_replace('\\', '/', $_SERVER['SCRIPT_NAME']) : '';
+    if ($script !== '') {
+        $dir = rtrim(str_replace('\\', '/', dirname($script)), '/');
+        return ($dir === '' ? '/' : $dir . '/');
     }
-    // Fallback: assume project is at web root
+
+    // Fallback to REQUEST_URI without query string
+    if (!empty($_SERVER['REQUEST_URI'])) {
+        $uri = explode('?', $_SERVER['REQUEST_URI'], 2)[0];
+        $dir = rtrim(str_replace('\\', '/', dirname($uri)), '/');
+        return ($dir === '' ? '/' : $dir . '/');
+    }
+
+    // Last resort
     return '/';
 }
 
 function url(string $path): string
 {
     $path = ltrim($path, '/');
-    return base_path() . $path;
+    $base = base_path();
+    // Ensure we don't accidentally build filesystem-looking paths
+    if ($base === '' || $base[0] !== '/') {
+        $base = '/';
+    }
+    return rtrim($base, '/') . '/' . $path;
 }
 
 function redirect(string $location)
 {
-    // If not absolute, prefix with base path
+    // Build absolute URL to be robust across browsers and proxies
     if (!preg_match('#^https?://#i', $location)) {
-        $location = url($location);
+        $scheme = (!empty($_SERVER['HTTPS']) && strtolower((string)$_SERVER['HTTPS']) !== 'off') ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+        $location = $scheme . '://' . $host . url($location);
     }
     header('Location: ' . $location);
     exit();

@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Welcome Admin, <?php echo $_SESSION['student']['name']; ?>!</h1>
-    <a href="logout.php" class="logout-btn">Logout</a>
+    <a href="<?php echo url('logout'); ?>" class="logout-btn">Logout</a>
     <hr>
     <h2>All Students</h2>
     <table>
@@ -35,8 +35,8 @@
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['department']; ?></td>
             <td>
-                <a href="<?php echo url('edit_student.php'); ?>?id=<?php echo $row['id']; ?>" class="btn edit-btn">Edit</a>
-                <a href="<?php echo url('admin_dashboard.php'); ?>?delete_id=<?php echo $row['id']; ?>" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
+                <a href="<?php echo url('edit_student'); ?>?id=<?php echo $row['id']; ?>" class="btn edit-btn">Edit</a>
+                <a href="<?php echo url('admin_dashboard'); ?>?delete_id=<?php echo $row['id']; ?>" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
             </td>
         </tr>
         <?php } ?>

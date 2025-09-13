@@ -14,9 +14,9 @@
         <p><b>Roll:</b> <?php echo $student['roll']; ?></p>
         <p><b>Email:</b> <?php echo $student['email']; ?></p>
         <p><b>Department:</b> <?php echo $student['department']; ?></p>
-        <a href="<?php echo url('update_profile.php'); ?>" class="btn update-btn">Update Profile</a>
-        <a href="<?php echo url('logout.php'); ?>" class="btn logout-btn">Logout</a>
-        <a href="<?php echo url('home.php'); ?>" class="btn home-btn"> Home</a>
+        <a href="<?php echo url('update_profile'); ?>" class="btn update-btn">Update Profile</a>
+        <a href="<?php echo url('logout'); ?>" class="btn logout-btn">Logout</a>
+        <a href="<?php echo url('home'); ?>" class="btn home-btn"> Home</a>
     </div>
 </body>
 </html>

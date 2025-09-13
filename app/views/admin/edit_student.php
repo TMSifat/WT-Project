@@ -34,7 +34,7 @@
 
             <button type="submit" class="btn">Update</button>
         </form>
-        <a class="back-link" href="<?php echo url('admin_dashboard.php'); ?>">← Back to Dashboard</a>
+        <a class="back-link" href="<?php echo url('admin_dashboard'); ?>">← Back to Dashboard</a>
     </div>
 </body>
 </html>

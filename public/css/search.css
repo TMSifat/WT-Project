@@ -1,0 +1,95 @@
+/* Search section styling */
+.guest-search {
+  text-align: center;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+}
+
+.guest-search h2 {
+  color: #023e8a;
+  margin-bottom: 15px;
+}
+
+/* Search form styling */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-form select {
+  padding: 10px 15px;
+  border: 2px solid #0077b6;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-form select:focus {
+  border-color: #023e8a;
+  box-shadow: 0 0 5px rgba(2, 62, 138, 0.5);
+}
+
+.search-form button {
+  padding: 10px 20px;
+  border: none;
+  background: #0077b6;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-form button:hover {
+  background: #023e8a;
+}
+
+/* Table container (for search.php results) */
+.table-container {
+  margin: 30px auto;
+  width: 90%;
+  max-width: 1000px;
+  overflow-x: auto;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-container th, 
+.table-container td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-container th {
+  background: #0077b6;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table-container tr:nth-child(even) {
+  background: #f6f9fc;
+}
+
+.table-container tr:hover {
+  background: #e9f5ff;
+  transition: 0.3s ease;
+}

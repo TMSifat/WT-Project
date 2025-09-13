@@ -18,18 +18,17 @@ class RegisterController
     {
         // Mimic old behavior
         if ($this->students->usernameExists(trim($_POST['username'] ?? ''))) {
-            echo "<script>alert('Username already exists! Try another.'); window.location='register.php';</script>";
+            echo "<script>alert('Username already exists! Try another.'); window.location='" . url('register') . "';</script>";
             exit();
         }
 
         $ok = $this->students->create($_POST, $_FILES['profile_photo'] ?? null);
         if ($ok) {
-            echo "<script>alert('Registration Successful! Please Login.'); window.location='login.php';</script>";
+            echo "<script>alert('Registration Successful! Please Login.'); window.location='" . url('login') . "';</script>";
             exit();
         }
 
-        echo "<script>alert('Registration failed!'); window.location='register.php';</script>";
+        echo "<script>alert('Registration failed!'); window.location='" . url('register') . "';</script>";
         exit();
     }
 }
-
