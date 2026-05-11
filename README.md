@@ -1,15 +1,20 @@
-# WT-Project: Student Management System
+# Student Management System
 
-A professional Student Management System designed using the MVC (Model-View-Controller) design pattern in PHP. This project demonstrates clean code practices, separation of concerns, and efficient data handling.
+A robust Student Management System built with PHP and MySQL using the MVC architecture.
 
-##  Features
-- MVC Architecture: Organised codebase for scalability and maintenance.
-- Admin Dashboard: Comprehensive management of student records.
-- Secure Authentication: Robust login system for administrative access.
-- CRUD Operations: Full Create, Read, Update, and Delete functionality for student data.
-
-## Tech Stack
-- Backend: PHP
-- Frontend: HTML, CSS, JavaScript
-- Database: MySQL
-- Architecture: MVC
+## Features
+* Admin Dashboard: Manage students, courses, and faculty.
+* * Student Portal: View profiles and grades.
+  * * Security: Role-based access control and secure login.
+    * * UI/UX: Modern, responsive design.
+     
+      * ## Tech Stack
+      * * Backend: PHP (MVC)
+        * * Database: MySQL
+          * * Frontend: HTML, CSS, JS, Bootstrap
+           
+            * ## Installation
+            * 1. Clone the repo
+              2. 2. Import database.sql
+                 3. 3. Configure config/db.php
+                    4. 4. Run on local server (XAMPP/WAMP)
